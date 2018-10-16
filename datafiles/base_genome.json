@@ -1,0 +1,43 @@
+{
+	"max_swim_strength": {
+		"mean": 20,
+		"std_deviation": 10,
+	},
+	"max_steering_strength": {
+		"mean": 10,
+		"std_deviation": 5,
+	,
+	"eagerness": {
+		"mean": .2,
+		"std_deviation": .1,
+	},
+	"color_pref": {
+		"mean": 800,
+		"std_deviation": 400,
+	},
+	"xscale": {
+		"mean": 1,
+		"std_deviation": .2,
+		"min": .1,
+	},
+	"yscale": {
+		"mean": 1,
+		"std_deviation": .2,
+		"min": .1,
+	}
+	"r": {
+		"uniform_init": true,
+		"min": 0,
+		"max": 255,
+	},
+	"g": {
+		"uniform_init": true,
+		"min": 0,
+		"max": 255,
+	},
+	"b": {
+		"uniform_init": true,
+		"min": 0,
+		"max": 255,
+	},
+}

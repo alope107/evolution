@@ -29,6 +29,24 @@
 
 interval = 300;
 timer = interval;
+
+// Data Structure Tests
+arr = array_create(3);
+arr[1] = "what";
+map = ds_map_create();
+map[? "speed"]  = 7;
+map[? "arr"] = arr;
+map[? "name"] = "game";
+name = "name";
+
+show_debug_message("what what what");
+show_debug_message(string(map[? "speed"]+3));
+newarr = map[? "arr"];
+show_debug_message(newarr[1]);
+show_debug_message(map[? name]);
+
+ds_map_destroy(map);
+
 </string>
           </argument>
         </arguments>
