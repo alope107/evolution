@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>force_strength = 40;
+            <string>// Testing SCM
+force_strength = 40;
 </string>
           </argument>
         </arguments>
