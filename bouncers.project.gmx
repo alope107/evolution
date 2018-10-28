@@ -3,7 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="1" name="datafiles">
+  <datafiles number="2" name="datafiles">
     <datafile>
       <name>base_genome.json</name>
       <exists>-1</exists>
@@ -36,11 +36,20 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\get_food_fixture.gml</script>
-    <script>scripts\rand_norm.gml</script>
-    <script>scripts\color_similarity.gml</script>
-    <script>scripts\create_triangle_fix.gml</script>
-    <script>scripts\base_genome.gml</script>
+    <scripts name="file_handling">
+      <script>scripts\file_text_read_all.gml</script>
+    </scripts>
+    <scripts name="fixtures">
+      <script>scripts\get_food_fixture.gml</script>
+      <script>scripts\create_triangle_fix.gml</script>
+    </scripts>
+    <scripts name="numeric">
+      <script>scripts\rand_norm.gml</script>
+      <script>scripts\color_similarity.gml</script>
+    </scripts>
+    <scripts name="genome">
+      <script>scripts\base_phenotype.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\bouncer_obj</object>

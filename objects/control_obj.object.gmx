@@ -31,22 +31,14 @@ interval = 300;
 timer = interval;
 
 // Data Structure Tests
-arr = array_create(3);
-arr[1] = "what";
-map = ds_map_create();
-map[? "speed"]  = 7;
-map[? "arr"] = arr;
-map[? "name"] = "game";
-name = "name";
 
-show_debug_message("what what what");
-show_debug_message(string(map[? "speed"]+3));
-newarr = map[? "arr"];
-show_debug_message(newarr[1]);
-show_debug_message(map[? name]);
-
-ds_map_destroy(map);
-
+/*json = file_text_read_all("base_genome.json");
+show_debug_message(json);
+global. = json_decode(json);
+show_debug_message(ds_map_size(mapa));
+show_debug_message(ds_map_find_first(mapa));
+mss = ds_map_find_value(mapa, 'g')
+show_debug_message(string(mss[? "max"]));*/
 </string>
           </argument>
         </arguments>
@@ -164,6 +156,42 @@ flag = phy_debug_render_shapes;
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="9" enumb="32">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>json = file_text_read_all("fake.json");
+show_debug_message(json);
+
+/*mapa = json_decode('{
+"key2": 
+{"key3": "value3"},
+"key4":
+{
+"key5": 7,
+"key6": "value6",
+}}');*/
+mapa = json_decode(json);
+//show_debug_message(ds_map_size(mapa));
+show_debug_message(ds_map_find_first(mapa));
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
   </events>
