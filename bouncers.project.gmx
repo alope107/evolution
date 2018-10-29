@@ -32,6 +32,7 @@
     <sprite>sprites\tail_spr_old</sprite>
     <sprite>sprites\tail_spr</sprite>
     <sprite>sprites\feeder_spr</sprite>
+    <sprite>sprites\pixel_spr</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -50,6 +51,9 @@
     <scripts name="genome">
       <script>scripts\base_phenotype.gml</script>
     </scripts>
+    <scripts name="drawing">
+      <script>scripts\draw_rectangle_fast.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\bouncer_obj</object>
@@ -60,9 +64,11 @@
     <object>objects\chaser_obj</object>
     <object>objects\food_obj</object>
     <object>objects\feeder_obj</object>
+    <object>objects\diffusion_control_obj</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\diffusion_test</room>
+    <room>rooms\fish_tank</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
