@@ -207,6 +207,10 @@ if (!initialized) {
     // If it is close to the target, ease up so as not to overshoot.
     swim_strength = min(max_swim_strength, dist * eagerness);
     
+    if(instance_number(food_obj) == 0) {
+        swim_strength = 0;
+    }
+    
     // The faster you swim, the faster you fade.
     energy -= abs(swim_strength);
     // But you always lose at least your basal.

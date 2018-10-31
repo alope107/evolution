@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>physics_world_update_speed(room_speed);
+            <string>randomize();
+
+physics_world_update_speed(room_speed);
 
 interval = 300;
 timer = interval;
@@ -136,7 +138,7 @@ if (timer &lt; 0) {
             <kind>1</kind>
             <string>//flag = phy_debug_render_aabb | phy_debug_render_collision_pairs | phy_debug_render_obb;
 flag = phy_debug_render_shapes;
-physics_world_draw_debug(flag);
+//physics_world_draw_debug(flag);
 </string>
           </argument>
         </arguments>
