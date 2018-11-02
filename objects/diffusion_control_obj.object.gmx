@@ -93,7 +93,22 @@ should_smash = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(iter = 0; iter &lt; iters; iter++) {
+            <string>for(dev = 0; dev &lt; 10; dev++) {
+    if(device_mouse_check_button(dev, mb_left))
+    {
+        mx = device_mouse_x(dev);
+        my = device_mouse_y(dev);
+        
+        bleach_x = max(0, min(floor(mx / x_step_size), x_steps - 1));
+        bleach_y = max(0, min(floor(my / y_step_size), y_steps - 1));
+        
+        r[bleach_x, bleach_y] = 255;
+        g[bleach_x, bleach_y] = 255;
+        b[bleach_x, bleach_y] = 255;
+    }
+}
+
+for(iter = 0; iter &lt; iters; iter++) {
     //if(update &gt;= update_thresh) {
         //update = 0;
         for(i = 0; i &lt; x_steps; i++) {
@@ -145,7 +160,6 @@ if (should_smash == 1) {
 
 smash_update++;
 update++;
-
 
 
 /*for(i = 0; i &lt; x_steps; i++) {
@@ -239,12 +253,12 @@ update++;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>bleach_x = max(0, min(floor(mouse_x / x_step_size), x_steps - 1));
+            <string>/*bleach_x = max(0, min(floor(mouse_x / x_step_size), x_steps - 1));
 bleach_y = max(0, min(floor(mouse_y / y_step_size), y_steps - 1));
 
 r[bleach_x, bleach_y] = 255;
 g[bleach_x, bleach_y] = 255;
-b[bleach_x, bleach_y] = 255;
+b[bleach_x, bleach_y] = 255;*/
 </string>
           </argument>
         </arguments>
@@ -269,8 +283,8 @@ b[bleach_x, bleach_y] = 255;
             <kind>1</kind>
             <string>for(i = 0; i &lt; x_steps; i++) {
     for(j = 0; j &lt; y_steps; j++) {
-        //color = make_colour_rgb(r[i, j], g[i, j], b[i, j]);
-        color = make_colour_hsv(r[i, j], g[i, j], b[i, j]);
+        color = make_colour_rgb(r[i, j], g[i, j], b[i, j]);
+        //color = make_colour_hsv(r[i, j], g[i, j], b[i, j]);
         x_start = i * x_step_size;
         y_start = j * y_step_size;
         //draw_rectangle_fast(x_start, y_start, x_start + x_step_size, y_start + y_step_size, color);
@@ -280,6 +294,7 @@ b[bleach_x, bleach_y] = 255;
 
 draw_text(room_width - 100, 30, string(inertia));
 draw_text(room_width - 100, room_height -30, string(iters));
+draw_text(100, room_height -30, string(r[25,25]));
 
 </string>
           </argument>

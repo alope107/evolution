@@ -55,6 +55,7 @@
       <script>scripts\draw_rectangle_fast.gml</script>
     </scripts>
   </scripts>
+  <shaders name="shaders"/>
   <objects name="objects">
     <object>objects\bouncer_obj</object>
     <object>objects\wall_obj</object>
