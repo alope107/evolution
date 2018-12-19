@@ -87,6 +87,10 @@ to_destroy = false;
     // How much color matters when going after food.
     color_pref = 800;
     
+    // How much the critter is discouraged by there being a wall between it and the food.
+    // Larger value means that it's less likely to go for food behind walls. 
+    wall_discouragement = 50000;
+    
     image_xscale = 1;
     image_yscale = 1;
     
@@ -96,6 +100,8 @@ to_destroy = false;
         max_steering_strength  += rand_norm(0, max_steering_strength/2);
         eagerness  += rand_norm(0, eagerness/2);
         color_pref += rand_norm(0, color_pref/2);
+        wall_discouragement += rand_norm(0, wall_discouragement/2);
+        
         //image_xscale += rand_norm(0, .1);
         //image_yscale += rand_norm(0, .1);
         
@@ -188,6 +194,10 @@ if (!initialized) {
         dist = point_distance(x, y, food.x, food.y);
         color_des = color_pref * color_similarity(self, food);
         desirability = (-1 * dist) + color_des;
+        
+        if (collision_line(x, y, food.x, food.y, wall_obj, false, true)) {
+            desirability -= wall_discouragement;
+        }
         if (desirability &gt; max_desirability) {
             max_desirability = desirability;
             target_x = food.x;
@@ -243,6 +253,7 @@ if (!initialized) {
         child.max_steering_strength = max_steering_strength + rand_norm(0, max_steering_strength/3);
         child.eagerness  = eagerness + rand_norm(0, eagerness/3);
         child.color_pref = color_pref + rand_norm(0, color_pref/3);
+        child.wall_discouragement = wall_discouragement + rand_norm(0, wall_discouragement/3);
         
         child.image_xscale = max(image_xscale + rand_norm(0, .02), .1);
         child.image_yscale = max(image_yscale + rand_norm(0, .02), .1);
@@ -328,6 +339,10 @@ if (initialized) {
     draw_sprite_ext(tail_spr, tail_frame, tail_x, tail_y, image_xscale, image_yscale, -1 * phy_rotation, c_white, image_alpha);
     
     //draw_text(x, y - 20, string(gen));
+    
+    
+    draw_line(x, y, target_x, target_y);
+   // draw_text(x, y - 20, string(wall_discouragement));
 }
 </string>
           </argument>
