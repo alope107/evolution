@@ -55,7 +55,6 @@
       <script>scripts\draw_rectangle_fast.gml</script>
     </scripts>
   </scripts>
-  <shaders name="shaders"/>
   <objects name="objects">
     <object>objects\bouncer_obj</object>
     <object>objects\wall_obj</object>
@@ -68,8 +67,8 @@
     <object>objects\diffusion_control_obj</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\diffusion_test</room>
     <room>rooms\fish_tank</room>
+    <room>rooms\diffusion_test</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
