@@ -122,7 +122,15 @@ to_destroy = false;
 }
 
 if (!initialized) {
+
     fix = create_triangle_fix(16 * image_yscale, 32 * image_xscale);
+    // If we are experimenting with skewed fixtures.
+    if (global.fixture_experiment) {
+        // Delete the unused normal fixture.
+        physics_fixture_delete(fix);
+        create_skew_traingle_fix(32 * image_xscale);
+    }
+    
     physics_fixture_set_density(fix, .3)//.5);
     physics_fixture_set_restitution(fix, 1);
     physics_fixture_set_collision_group(fix, 0);

@@ -43,10 +43,12 @@
     <scripts name="fixtures">
       <script>scripts\get_food_fixture.gml</script>
       <script>scripts\create_triangle_fix.gml</script>
+      <script>scripts\create_skew_traingle_fix.gml</script>
     </scripts>
     <scripts name="numeric">
       <script>scripts\rand_norm.gml</script>
       <script>scripts\color_similarity.gml</script>
+      <script>scripts\normalize_degrees.gml</script>
     </scripts>
     <scripts name="genome">
       <script>scripts\base_phenotype.gml</script>

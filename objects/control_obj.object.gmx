@@ -31,6 +31,10 @@ physics_world_update_speed(room_speed);
 
 interval = 300;
 timer = interval;
+draw_physics = false;
+
+// TEST FLAGS
+global.fixture_experiment = true;
 
 // Data Structure Tests
 
@@ -136,9 +140,11 @@ if (timer &lt; 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//flag = phy_debug_render_aabb | phy_debug_render_collision_pairs | phy_debug_render_obb;
+            <string>flag = phy_debug_render_aabb | phy_debug_render_collision_pairs | phy_debug_render_obb;
 flag = phy_debug_render_shapes;
-//physics_world_draw_debug(flag);
+if (draw_physics) {
+    physics_world_draw_debug(flag);
+}
 </string>
           </argument>
         </arguments>
@@ -158,6 +164,29 @@ flag = phy_debug_render_shapes;
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="9" enumb="68">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_physics = !draw_physics;
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
     <event eventtype="9" enumb="32">
