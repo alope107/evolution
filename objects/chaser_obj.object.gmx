@@ -353,8 +353,6 @@ if (initialized) {
     tail_y = y + (-1 * sin(rad) * tail_offset);
     draw_sprite_ext(tail_spr, tail_frame, tail_x, tail_y, image_xscale, image_yscale, -1 * phy_rotation, c_white, image_alpha);
     
-    //draw_text(x, y - 20, string(gen));
-    
     if (global.fixture_experiment) {
         point1 = rotate_point(body_coord[0, 0], body_coord[0, 1], phy_rotation);
         point2 = rotate_point(body_coord[1, 0], body_coord[1, 1], phy_rotation);
@@ -375,8 +373,13 @@ if (initialized) {
         draw_set_alpha(1);
     }
     
-    
-    draw_line(x, y, target_x, target_y);
+    draw_set_color(c_white);
+    if (global.draw_desire) {
+        draw_line(x, y, target_x, target_y);
+    }
+    if (global.draw_generation) {
+        draw_text(x, y - 20, string(gen));
+    }
    // draw_text(x, y - 20, string(wall_discouragement));
 }
 </string>

@@ -31,10 +31,14 @@ physics_world_update_speed(room_speed);
 
 interval = 300;
 timer = interval;
-draw_physics = false;
 
 // TEST FLAGS
 global.fixture_experiment = false;
+
+// DEBUG FLAGS
+global.draw_physics = false;
+global.draw_desire = false;
+global.draw_generation = false;
 
 // Data Structure Tests
 
@@ -142,7 +146,7 @@ if (timer &lt; 0) {
             <kind>1</kind>
             <string>flag = phy_debug_render_aabb | phy_debug_render_collision_pairs | phy_debug_render_obb;
 flag = phy_debug_render_shapes;
-if (draw_physics) {
+if (global.draw_physics) {
     physics_world_draw_debug(flag);
 }
 </string>
@@ -166,6 +170,52 @@ if (draw_physics) {
         <isnot>0</isnot>
       </action>
     </event>
+    <event eventtype="9" enumb="76">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.draw_desire = !global.draw_desire;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="71">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.draw_generation = !global.draw_generation;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="9" enumb="68">
       <action>
         <libid>1</libid>
@@ -183,7 +233,7 @@ if (draw_physics) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_physics = !draw_physics;
+            <string>global.draw_physics = !global.draw_physics;
 </string>
           </argument>
         </arguments>
