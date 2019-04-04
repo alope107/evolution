@@ -94,6 +94,8 @@ to_destroy = false;
     image_xscale = 1;
     image_yscale = 1;
     
+    body_coord = random_triangle(image_xscale * 32);
+    
     perturb = true;
     if (perturb) {
         max_swim_strength  += rand_norm(0, max_swim_strength/2);
@@ -128,7 +130,8 @@ if (!initialized) {
     if (global.fixture_experiment) {
         // Delete the unused normal fixture.
         physics_fixture_delete(fix);
-        create_skew_traingle_fix(32 * image_xscale);
+        //create_skew_traingle_fix(32 * image_xscale);
+        create_polygon_fix(body_coord);
     }
     
     physics_fixture_set_density(fix, .3)//.5);
@@ -266,6 +269,8 @@ if (!initialized) {
         child.image_xscale = max(image_xscale + rand_norm(0, .02), .1);
         child.image_yscale = max(image_yscale + rand_norm(0, .02), .1);
         
+        child.body_coord = body_coord;
+        
         color_variation = 10
         child.r = r + max(min(rand_norm(0, color_variation), 255), 0);
         child.g = g + max(min(rand_norm(0, color_variation), 255), 0);
@@ -338,7 +343,9 @@ if (initialized) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>if (!global.fixture_experiment) {
+    draw_self();
+}
 if (initialized) {
     tail_offset = (width/2) + (sprite_get_width(tail_spr) * image_xscale)/2;
     rad = degtorad(phy_rotation);
@@ -347,6 +354,26 @@ if (initialized) {
     draw_sprite_ext(tail_spr, tail_frame, tail_x, tail_y, image_xscale, image_yscale, -1 * phy_rotation, c_white, image_alpha);
     
     //draw_text(x, y - 20, string(gen));
+    
+    if (global.fixture_experiment) {
+        point1 = rotate_point(body_coord[0, 0], body_coord[0, 1], phy_rotation);
+        point2 = rotate_point(body_coord[1, 0], body_coord[1, 1], phy_rotation);
+        point3 = rotate_point(body_coord[2, 0], body_coord[2, 1], phy_rotation);
+        show_debug_message("DEG: " + string(phy_rotation) + 
+                           " BEFORE: (" + string(body_coord[0, 0]) + ", " + string(body_coord[0, 1]) + ")" +
+                           " AFTER: (" + string(point1[0]) + ", " + string(point1[1]) + ")");
+        draw_set_alpha(image_alpha)
+        draw_triangle_colour(x + point1[0], y + point1[1],
+                             x + point2[0], y + point2[1],
+                             x + point3[0], y + point3[1],
+                             image_blend, image_blend, image_blend, false);
+        draw_triangle_colour(x + body_coord[0, 0], y + body_coord[0, 1],
+                             x + body_coord[1, 0], y + body_coord[1, 1],
+                             x + body_coord[2, 0], y + body_coord[2, 1],
+                             image_blend, image_blend, image_blend, false);
+                             
+        draw_set_alpha(1);
+    }
     
     
     draw_line(x, y, target_x, target_y);

@@ -34,7 +34,7 @@ timer = interval;
 draw_physics = false;
 
 // TEST FLAGS
-global.fixture_experiment = true;
+global.fixture_experiment = false;
 
 // Data Structure Tests
 
