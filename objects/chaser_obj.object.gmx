@@ -130,7 +130,6 @@ if (!initialized) {
     if (global.fixture_experiment) {
         // Delete the unused normal fixture.
         physics_fixture_delete(fix);
-        //create_skew_traingle_fix(32 * image_xscale);
         create_polygon_fix(body_coord);
     }
     
@@ -269,7 +268,15 @@ if (!initialized) {
         child.image_xscale = max(image_xscale + rand_norm(0, .02), .1);
         child.image_yscale = max(image_yscale + rand_norm(0, .02), .1);
         
-        child.body_coord = body_coord;
+        for (i = 0; i &lt; array_height_2d(body_coord); i++) {
+            for (j = 0; j &lt; 2; j++) {
+                // TODO: Make sure that this keeps the points in clockwise order.
+                child.body_coord[i, j] = body_coord[i, j] + rand_norm(0, body_coord[i, j] / 3);
+            }
+        }
+        
+        child.body_coord = sort_clockwise_and_center(child.body_coord);
+        
         
         color_variation = 10
         child.r = r + max(min(rand_norm(0, color_variation), 255), 0);
@@ -347,29 +354,24 @@ if (initialized) {
     draw_self();
 }
 if (initialized) {
+    
+    /* Don't draw tail until you can find a nice place for it.
     tail_offset = (width/2) + (sprite_get_width(tail_spr) * image_xscale)/2;
     rad = degtorad(phy_rotation);
     tail_x =  x + (-1 * cos(rad) * tail_offset);
     tail_y = y + (-1 * sin(rad) * tail_offset);
-    draw_sprite_ext(tail_spr, tail_frame, tail_x, tail_y, image_xscale, image_yscale, -1 * phy_rotation, c_white, image_alpha);
+    draw_sprite_ext(tail_spr, tail_frame, tail_x, tail_y, image_xscale, image_yscale, -1 * phy_rotation, c_white, image_alpha); */
     
     if (global.fixture_experiment) {
+        // TODO: Do this nicely with a 2D array
         point1 = rotate_point(body_coord[0, 0], body_coord[0, 1], phy_rotation);
         point2 = rotate_point(body_coord[1, 0], body_coord[1, 1], phy_rotation);
         point3 = rotate_point(body_coord[2, 0], body_coord[2, 1], phy_rotation);
-        show_debug_message("DEG: " + string(phy_rotation) + 
-                           " BEFORE: (" + string(body_coord[0, 0]) + ", " + string(body_coord[0, 1]) + ")" +
-                           " AFTER: (" + string(point1[0]) + ", " + string(point1[1]) + ")");
-        draw_set_alpha(image_alpha)
-        draw_triangle_colour(x + point1[0], y + point1[1],
-                             x + point2[0], y + point2[1],
-                             x + point3[0], y + point3[1],
-                             image_blend, image_blend, image_blend, false);
-        draw_triangle_colour(x + body_coord[0, 0], y + body_coord[0, 1],
-                             x + body_coord[1, 0], y + body_coord[1, 1],
-                             x + body_coord[2, 0], y + body_coord[2, 1],
-                             image_blend, image_blend, image_blend, false);
-                             
+        draw_set_alpha(image_alpha);
+        draw_set_colour(image_blend);
+        draw_triangle(x + point1[0], y + point1[1],
+                      x + point2[0], y + point2[1],
+                      x + point3[0], y + point3[1], false);                         
         draw_set_alpha(1);
     }
     
