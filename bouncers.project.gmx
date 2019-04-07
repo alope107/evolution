@@ -65,6 +65,7 @@
       <script>scripts\triangle_centroid.gml</script>
       <script>scripts\triangle_side_lengths.gml</script>
       <script>scripts\triangle_incenter.gml</script>
+      <script>scripts\mutate_triangle.gml</script>
     </scripts>
     <scripts name="tests">
       <scripts name="geometry">

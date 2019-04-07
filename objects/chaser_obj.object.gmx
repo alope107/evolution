@@ -124,14 +124,7 @@ to_destroy = false;
 }
 
 if (!initialized) {
-
-    fix = create_triangle_fix(16 * image_yscale, 32 * image_xscale);
-    // If we are experimenting with skewed fixtures.
-    if (global.fixture_experiment) {
-        // Delete the unused normal fixture.
-        physics_fixture_delete(fix);
-        create_polygon_fix(body_coord);
-    }
+    fix = create_polygon_fix(body_coord);
     
     physics_fixture_set_density(fix, .3)//.5);
     physics_fixture_set_restitution(fix, 1);
@@ -268,14 +261,15 @@ if (!initialized) {
         child.image_xscale = max(image_xscale + rand_norm(0, .02), .1);
         child.image_yscale = max(image_yscale + rand_norm(0, .02), .1);
         
-        for (i = 0; i &lt; array_height_2d(body_coord); i++) {
+        child.body_coord = mutate_triangle(body_coord, 9, 15);
+        /*for (i = 0; i &lt; array_height_2d(body_coord); i++) {
             for (j = 0; j &lt; 2; j++) {
                 // TODO: Make sure that this keeps the points in clockwise order.
                 child.body_coord[i, j] = body_coord[i, j] + rand_norm(0, body_coord[i, j] / 9);
             }
         }
         
-        child.body_coord = sort_clockwise_and_center(child.body_coord);
+        child.body_coord = sort_clockwise_and_center(child.body_coord);*/
         
         
         color_variation = 10
@@ -350,64 +344,59 @@ if (initialized) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!global.fixture_experiment) {
-    draw_self();
-}
-if (initialized) {
+            <string>if (initialized) {
     
-    /* Don't draw tail until you can find a nice place for it.
-    tail_offset = (width/2) + (sprite_get_width(tail_spr) * image_xscale)/2;
+     //Don't draw tail until you can find a nice place for it.
+    /*tail_offset = (width/2) + (sprite_get_width(tail_spr) * image_xscale)/2;
     rad = degtorad(phy_rotation);
     tail_x =  x + (-1 * cos(rad) * tail_offset);
     tail_y = y + (-1 * sin(rad) * tail_offset);
     draw_sprite_ext(tail_spr, tail_frame, tail_x, tail_y, image_xscale, image_yscale, -1 * phy_rotation, c_white, image_alpha); */
     
-    if (global.fixture_experiment) {
     
-        // Rotate body
-        for (var i = 0; i &lt; 3; i++) {
-            rotated_pt = rotate_point(body_coord[i, 0], body_coord[i, 1], phy_rotation);
-            rotated_body[i, 0] = rotated_pt[0];
-            rotated_body[i, 1] = rotated_pt[1];
-        }
-        
-        draw_set_alpha(image_alpha);
-        draw_set_colour(image_blend);
-
-        // Draw body
-        draw_triangle(x + rotated_body[0, 0], y + rotated_body[0, 1],
-                    x + rotated_body[1, 0], y + rotated_body[1, 1],
-                    x + rotated_body[2, 0], y + rotated_body[2, 1], false);
-        
-        draw_set_colour(c_black);
-        
-        // Draw outline
-        draw_triangle(x + rotated_body[0, 0], y + rotated_body[0, 1],
-                        x + rotated_body[1, 0], y + rotated_body[1, 1],
-                        x + rotated_body[2, 0], y + rotated_body[2, 1], true);
-                      
-       
-        // Draw eye.
-        white_radius = 5;
-        pupil_radius = 2.5;
-        pupil_offset[0] = white_radius - pupil_radius;
-        pupil_offset[1] = 0;
-        
-        white_offset = triangle_incenter(rotated_body);
-        
-        pupil_dir = point_direction(x + white_offset[0], y + white_offset[1], target_x, target_y)
-        
-        pupil_offset = rotate_point(pupil_offset[0], pupil_offset[1], -pupil_dir);
-        
-        
-        draw_set_color(c_white);
-        draw_circle(x + white_offset[0], y + white_offset[1], white_radius, false);
-        
-        draw_set_colour(c_black);
-        draw_circle(x + white_offset[0] + pupil_offset[0], y + white_offset[1] + pupil_offset[1], pupil_radius, false);
-                     
-        draw_set_alpha(1);
+    // Rotate body
+    for (var i = 0; i &lt; 3; i++) {
+        rotated_pt = rotate_point(body_coord[i, 0], body_coord[i, 1], phy_rotation);
+        rotated_body[i, 0] = rotated_pt[0];
+        rotated_body[i, 1] = rotated_pt[1];
     }
+    
+    draw_set_alpha(image_alpha);
+    draw_set_colour(image_blend);
+
+    // Draw body
+    draw_triangle(x + rotated_body[0, 0], y + rotated_body[0, 1],
+                x + rotated_body[1, 0], y + rotated_body[1, 1],
+                x + rotated_body[2, 0], y + rotated_body[2, 1], false);
+    
+    draw_set_colour(c_black);
+    
+    // Draw outline
+    draw_triangle(x + rotated_body[0, 0], y + rotated_body[0, 1],
+                    x + rotated_body[1, 0], y + rotated_body[1, 1],
+                    x + rotated_body[2, 0], y + rotated_body[2, 1], true);
+                  
+   
+    // Draw eye.
+    white_radius = 5;
+    pupil_radius = 2.5;
+    pupil_offset[0] = white_radius - pupil_radius;
+    pupil_offset[1] = 0;
+    
+    white_offset = triangle_incenter(rotated_body);
+    
+    pupil_dir = point_direction(x + white_offset[0], y + white_offset[1], target_x, target_y)
+    
+    pupil_offset = rotate_point(pupil_offset[0], pupil_offset[1], -pupil_dir);
+    
+    
+    draw_set_color(c_white);
+    draw_circle(x + white_offset[0], y + white_offset[1], white_radius, false);
+    
+    draw_set_colour(c_black);
+    draw_circle(x + white_offset[0] + pupil_offset[0], y + white_offset[1] + pupil_offset[1], pupil_radius, false);
+                 
+    draw_set_alpha(1);
     
     draw_set_color(c_white);
     if (global.draw_desire) {

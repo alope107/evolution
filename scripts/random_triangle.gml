@@ -1,13 +1,15 @@
 // Creates a triangle and returns its points as a 2D array in clockwise order.
 // The centroid of the triangle is located at the origin.
-// scale is the maximum x or y value for each point.
+// scale modifies how big.
+// The smallest angle will be no smaller than the supplied minimum in degrees (optional).
+
 var scale, num_points, pts, max_angle, valid, angles;
 
 scale = argument[0];
 
 min_angle = -1;
 if (argument_count == 2) {
-    max_angle = argument[1];
+    min_angle = argument[1];
 }
 
 num_points = 3;
@@ -26,7 +28,7 @@ while (!valid) {
     angles = inner_angles(pts);
     valid = true;
     for (i= 0; i < num_points; i++) {
-        valid = valid && (angles[i] >= max_angle); 
+        valid = valid && (angles[i] >= min_angle); 
     }
 }
 
