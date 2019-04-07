@@ -376,7 +376,20 @@ if (initialized) {
         draw_set_colour(c_black);
         draw_triangle(x + point1[0], y + point1[1],
                       x + point2[0], y + point2[1],
-                      x + point3[0], y + point3[1], true);                 
+                      x + point3[0], y + point3[1], true); 
+                      
+        white_radius = 5;
+        pupil_radius = 2;
+        pupil_offset[0] = white_radius - pupil_radius;
+        pupil_offset[1] = 0;
+        
+        pupil_offset = rotate_point(pupil_offset[0], pupil_offset[1], -dir);
+        draw_set_color(c_white);
+        draw_circle(x, y, 5, false);
+        
+        draw_set_colour(c_black);
+        draw_circle(x + pupil_offset[0], y + pupil_offset[1], 2, false);
+                     
         draw_set_alpha(1);
     }
     
