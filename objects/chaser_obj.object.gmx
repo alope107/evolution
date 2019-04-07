@@ -363,32 +363,48 @@ if (initialized) {
     draw_sprite_ext(tail_spr, tail_frame, tail_x, tail_y, image_xscale, image_yscale, -1 * phy_rotation, c_white, image_alpha); */
     
     if (global.fixture_experiment) {
-        // TODO: Do this nicely with a 2D array
-        point1 = rotate_point(body_coord[0, 0], body_coord[0, 1], phy_rotation);
-        point2 = rotate_point(body_coord[1, 0], body_coord[1, 1], phy_rotation);
-        point3 = rotate_point(body_coord[2, 0], body_coord[2, 1], phy_rotation);
+    
+        // Rotate body
+        for (var i = 0; i &lt; 3; i++) {
+            rotated_pt = rotate_point(body_coord[i, 0], body_coord[i, 1], phy_rotation);
+            rotated_body[i, 0] = rotated_pt[0];
+            rotated_body[i, 1] = rotated_pt[1];
+        }
+        
         draw_set_alpha(image_alpha);
         draw_set_colour(image_blend);
-        draw_triangle(x + point1[0], y + point1[1],
-                      x + point2[0], y + point2[1],
-                      x + point3[0], y + point3[1], false);  
+
+        // Draw body
+        draw_triangle(x + rotated_body[0, 0], y + rotated_body[0, 1],
+                    x + rotated_body[1, 0], y + rotated_body[1, 1],
+                    x + rotated_body[2, 0], y + rotated_body[2, 1], false);
         
         draw_set_colour(c_black);
-        draw_triangle(x + point1[0], y + point1[1],
-                      x + point2[0], y + point2[1],
-                      x + point3[0], y + point3[1], true); 
+        
+        // Draw outline
+        draw_triangle(x + rotated_body[0, 0], y + rotated_body[0, 1],
+                        x + rotated_body[1, 0], y + rotated_body[1, 1],
+                        x + rotated_body[2, 0], y + rotated_body[2, 1], true);
                       
+       
+        // Draw eye.
         white_radius = 5;
-        pupil_radius = 2;
+        pupil_radius = 2.5;
         pupil_offset[0] = white_radius - pupil_radius;
         pupil_offset[1] = 0;
         
-        pupil_offset = rotate_point(pupil_offset[0], pupil_offset[1], -dir);
+        white_offset = triangle_incenter(rotated_body);
+        
+        pupil_dir = point_direction(x + white_offset[0], y + white_offset[1], target_x, target_y)
+        
+        pupil_offset = rotate_point(pupil_offset[0], pupil_offset[1], -pupil_dir);
+        
+        
         draw_set_color(c_white);
-        draw_circle(x, y, 5, false);
+        draw_circle(x + white_offset[0], y + white_offset[1], white_radius, false);
         
         draw_set_colour(c_black);
-        draw_circle(x + pupil_offset[0], y + pupil_offset[1], 2, false);
+        draw_circle(x + white_offset[0] + pupil_offset[0], y + white_offset[1] + pupil_offset[1], pupil_radius, false);
                      
         draw_set_alpha(1);
     }

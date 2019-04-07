@@ -4,12 +4,13 @@ var triangle, sides, i, j, angles, numerator, denominator;
 
 triangle = argument0;
 
-// Get the side lengths.
+sides = triangle_side_lengths(triangle);
+/*// Get the side lengths.
 for (i = 0; i < 3; i++) {
     j = (i + 1) mod 3;
     sides[i] = point_distance(triangle[i, 0], triangle[i, 1], 
                               triangle[j, 0], triangle[j, 1]);
-}
+}*/
 
 // Use the sides to get the angles.
 for (i = 0; i < 3; i++) {

@@ -63,11 +63,15 @@
       <script>scripts\sort_clockwise_and_center.gml</script>
       <script>scripts\inner_angles.gml</script>
       <script>scripts\triangle_centroid.gml</script>
+      <script>scripts\triangle_side_lengths.gml</script>
+      <script>scripts\triangle_incenter.gml</script>
     </scripts>
     <scripts name="tests">
       <scripts name="geometry">
         <script>scripts\inner_angles_test.gml</script>
         <script>scripts\rotate_point_test.gml</script>
+        <script>scripts\triangle_side_lengths_test.gml</script>
+        <script>scripts\triangle_incenter_test.gml</script>
       </scripts>
     </scripts>
   </scripts>
