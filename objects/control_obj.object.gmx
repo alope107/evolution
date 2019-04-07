@@ -39,6 +39,7 @@ global.fixture_experiment = true;
 global.draw_physics = false;
 global.draw_desire = false;
 global.draw_generation = false;
+global.draw_interval = false;
 
 // Data Structure Tests
 
@@ -76,6 +77,52 @@ if (timer &lt; 0) {
     instance_create(random_range(100, room_width-100), random_range(100, room_height-100), food_obj);
     timer = interval;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="40">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>interval++;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="38">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>interval = max(2, interval - 1);
 </string>
           </argument>
         </arguments>
@@ -149,6 +196,11 @@ flag = phy_debug_render_shapes;
 if (global.draw_physics) {
     physics_world_draw_debug(flag);
 }
+if (global.draw_interval) {
+    draw_set_color(c_white);
+    draw_set_alpha(1);
+    draw_text(room_width/2, room_height/2, string(interval));
+}
 </string>
           </argument>
         </arguments>
@@ -188,6 +240,29 @@ if (global.draw_physics) {
           <argument>
             <kind>1</kind>
             <string>global.draw_desire = !global.draw_desire;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="73">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.draw_interval = !global.draw_interval;
 </string>
           </argument>
         </arguments>

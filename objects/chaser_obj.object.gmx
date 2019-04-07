@@ -94,7 +94,7 @@ to_destroy = false;
     image_xscale = 1;
     image_yscale = 1;
     
-    body_coord = random_triangle(image_xscale * 32);
+    body_coord = random_triangle(image_xscale * 32, 15);
     
     perturb = true;
     if (perturb) {
@@ -271,7 +271,7 @@ if (!initialized) {
         for (i = 0; i &lt; array_height_2d(body_coord); i++) {
             for (j = 0; j &lt; 2; j++) {
                 // TODO: Make sure that this keeps the points in clockwise order.
-                child.body_coord[i, j] = body_coord[i, j] + rand_norm(0, body_coord[i, j] / 3);
+                child.body_coord[i, j] = body_coord[i, j] + rand_norm(0, body_coord[i, j] / 9);
             }
         }
         
@@ -371,7 +371,12 @@ if (initialized) {
         draw_set_colour(image_blend);
         draw_triangle(x + point1[0], y + point1[1],
                       x + point2[0], y + point2[1],
-                      x + point3[0], y + point3[1], false);                         
+                      x + point3[0], y + point3[1], false);  
+        
+        draw_set_colour(c_black);
+        draw_triangle(x + point1[0], y + point1[1],
+                      x + point2[0], y + point2[1],
+                      x + point3[0], y + point3[1], true);                 
         draw_set_alpha(1);
     }
     

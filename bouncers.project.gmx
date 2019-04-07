@@ -61,6 +61,13 @@
       <script>scripts\random_triangle.gml</script>
       <script>scripts\rotate_point.gml</script>
       <script>scripts\sort_clockwise_and_center.gml</script>
+      <script>scripts\inner_angles.gml</script>
+    </scripts>
+    <scripts name="tests">
+      <scripts name="geometry">
+        <script>scripts\inner_angles_test.gml</script>
+        <script>scripts\rotate_point_test.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <objects name="objects">

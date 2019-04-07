@@ -25,9 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Place test below.
+            <string>// Place tests below.
 
-pts = rotate_point(1, 1, 60);
+rotate_point_test();
+inner_angles_test();
+
+/*pts = rotate_point(1, 1, 60);
 show_debug_message("Expected: (-.366, 1.37)");
 show_debug_message("Actual: (" + string(pts[0]) + ", " + string(pts[1]) + ")");
 
@@ -35,7 +38,7 @@ show_debug_message(" ");
 
 pts = rotate_point(98, 32, 760);
 show_debug_message("Expected: (54.5, 87.5)");
-show_debug_message("Actual: (" + string(pts[0]) + ", " + string(pts[1]) + ")");
+show_debug_message("Actual: (" + string(pts[0]) + ", " + string(pts[1]) + ")");*/
 </string>
           </argument>
         </arguments>
