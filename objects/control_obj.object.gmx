@@ -41,6 +41,7 @@ global.draw_physics = false;
 global.draw_desire = false;
 global.draw_generation = false;
 global.draw_interval = false;
+global.draw_debug_overlay = false;
 
 // Data Structure Tests
 
@@ -221,6 +222,30 @@ if (global.draw_interval) {
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="9" enumb="79">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.draw_debug_overlay = !global.draw_debug_overlay;
+show_debug_overlay(global.draw_debug_overlay);
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
     <event eventtype="9" enumb="76">

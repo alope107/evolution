@@ -91,6 +91,11 @@ to_destroy = false;
     // Larger value means that it's less likely to go for food behind walls. 
     wall_discouragement = 50000;
     
+    // How big the white of the eye will be as a ratio of the eye white radius to inradius.
+    eye_white_scale = .5;
+    // How big the pupil of the eye will be as a ratio of pupil radius the eye white radius.
+    pupil_scale = .5;
+    
     image_xscale = 1;
     image_yscale = 1;
     
@@ -103,6 +108,8 @@ to_destroy = false;
         eagerness  += rand_norm(0, eagerness/2);
         color_pref += rand_norm(0, color_pref/2);
         wall_discouragement += rand_norm(0, wall_discouragement/2);
+        eye_white_scale += rand_norm(0, eye_white_scale/3);
+        pupil_scale += rand_norm(0, pupil_scale/3);
         
         //image_xscale += rand_norm(0, .1);
         //image_yscale += rand_norm(0, .1);
@@ -137,6 +144,10 @@ if (!initialized) {
     physics_fixture_delete(fix);
     
     area = triangle_area(body_coord);
+    inradius = triangle_inradius(body_coord);
+    
+    white_radius = eye_white_scale * inradius;
+    pupil_radius = pupil_scale * white_radius;
     
     // TODO figure out better way than hardcoding sprite version.
     width = image_xscale * sprite_get_width(chaser_spr);
@@ -190,56 +201,9 @@ if (!initialized) {
     // Set desirability SO LOW that no one could ever want it.
     max_desirability = -9999999;
     
-    // TODO have better default
-    target_x = 0;
-    target_y = 0;
-    
-    for (i = 0; i &lt; instance_number(food_obj); i += 1) {
-        food = instance_find(food_obj, i);
-        dist = point_distance(x, y, food.x, food.y);
-        color_des = color_pref * color_similarity(self, food);
-        desirability = (-1 * dist) + color_des;
-        
-        if (collision_line(x, y, food.x, food.y, wall_obj, false, true)) {
-            desirability -= wall_discouragement;
-        }
-        if (desirability &gt; max_desirability) {
-            max_desirability = desirability;
-            target_x = food.x;
-            target_y = food.y;
-        }
-    }
-    
-    fear = false;
-    
-    for (i = 0; i &lt; instance_number(chaser_obj); i +=1) {
-        creature = instance_find(chaser_obj, i);
-        if (!creature.initialized || !global.cannibals) {
-            continue;
-        }
-        if (creature.area &lt; area/2 || creature.area &gt; area * 2) {
-            dist = point_distance(x, y, creature.x, creature.y);
-            desirability = (-1 * dist) + 999999999; // Maybe add color?
-            if (collision_line(x, y, creature.x, creature.y, wall_obj, false, true)) {
-                desirability -= wall_discouragement;
-            }
-            if (desirability &gt; max_desirability) {
-                max_desirability = desirability;
-                target_x = creature.x;
-                target_y = creature.y;
-                // If we're in fear for our life.
-                if (creature.area &gt; area * 2) {
-                    // Go away from the scary
-                    flipped = mirror_point(target_x, target_y, x, y);
-                    target_x = flipped[0];
-                    target_y = flipped[1];
-                }
-            }
-        }
-    }
-    
-    //target_x = target_food.x
-    //target_y = target_food.y
+    t_coord = select_target();
+    target_x = t_coord[0];
+    target_y = t_coord[1];
     
     dir = point_direction(x, y, target_x, target_y);
     dist = point_distance(x, y, target_x, target_y);
@@ -291,18 +255,12 @@ if (!initialized) {
         child.image_xscale = max(image_xscale + rand_norm(0, .02), .1);
         child.image_yscale = max(image_yscale + rand_norm(0, .02), .1);
         
+        child.eye_white_scale = eye_white_scale + rand_norm(0, eye_white_scale/5);
+        child.pupil_scale = pupil_scale + rand_norm(0, pupil_scale/5);
+        
         child.body_coord = mutate_triangle(body_coord, 9, 15);
-        /*for (i = 0; i &lt; array_height_2d(body_coord); i++) {
-            for (j = 0; j &lt; 2; j++) {
-                // TODO: Make sure that this keeps the points in clockwise order.
-                child.body_coord[i, j] = body_coord[i, j] + rand_norm(0, body_coord[i, j] / 9);
-            }
-        }
         
-        child.body_coord = sort_clockwise_and_center(child.body_coord);*/
-        
-        
-        color_variation = 10
+        color_variation = 10;
         child.r = r + max(min(rand_norm(0, color_variation), 255), 0);
         child.g = g + max(min(rand_norm(0, color_variation), 255), 0);
         child.b = b + max(min(rand_norm(0, color_variation), 255), 0);
@@ -452,8 +410,8 @@ if (initialized &amp;&amp; other.initialized &amp;&amp; global.cannibals) {
                   
    
     // Draw eye.
-    white_radius = 5;
-    pupil_radius = 2.5;
+    //white_radius = inradius;
+    //pupil_radius = 2.5;
     pupil_offset[0] = white_radius - pupil_radius;
     pupil_offset[1] = 0;
     

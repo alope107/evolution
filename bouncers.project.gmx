@@ -68,6 +68,8 @@
       <script>scripts\mutate_triangle.gml</script>
       <script>scripts\triangle_area.gml</script>
       <script>scripts\mirror_point.gml</script>
+      <script>scripts\triangle_inradius.gml</script>
+      <script>scripts\triangle_perimeter.gml</script>
     </scripts>
     <scripts name="tests">
       <scripts name="geometry">
@@ -77,6 +79,9 @@
         <script>scripts\triangle_incenter_test.gml</script>
         <script>scripts\triangle_area_test.gml</script>
       </scripts>
+    </scripts>
+    <scripts name="chaser">
+      <script>scripts\select_target.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">
