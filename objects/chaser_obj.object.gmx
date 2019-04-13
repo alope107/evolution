@@ -136,6 +136,8 @@ if (!initialized) {
     bound_fix = physics_fixture_bind(fix, self);
     physics_fixture_delete(fix);
     
+    area = triangle_area(body_coord);
+    
     // TODO figure out better way than hardcoding sprite version.
     width = image_xscale * sprite_get_width(chaser_spr);
 
@@ -205,6 +207,34 @@ if (!initialized) {
             max_desirability = desirability;
             target_x = food.x;
             target_y = food.y;
+        }
+    }
+    
+    fear = false;
+    
+    for (i = 0; i &lt; instance_number(chaser_obj); i +=1) {
+        creature = instance_find(chaser_obj, i);
+        if (!creature.initialized || !global.cannibals) {
+            continue;
+        }
+        if (creature.area &lt; area/2 || creature.area &gt; area * 2) {
+            dist = point_distance(x, y, creature.x, creature.y);
+            desirability = (-1 * dist) + 999999999; // Maybe add color?
+            if (collision_line(x, y, creature.x, creature.y, wall_obj, false, true)) {
+                desirability -= wall_discouragement;
+            }
+            if (desirability &gt; max_desirability) {
+                max_desirability = desirability;
+                target_x = creature.x;
+                target_y = creature.y;
+                // If we're in fear for our life.
+                if (creature.area &gt; area * 2) {
+                    // Go away from the scary
+                    flipped = mirror_point(target_x, target_y, x, y);
+                    target_x = flipped[0];
+                    target_y = flipped[1];
+                }
+            }
         }
     }
     
@@ -321,6 +351,50 @@ if (initialized) {
     meal_size = food_energy * color_multiplier * bite_scale;
     
     energy = min(max_energy, energy + meal_size);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="chaser_obj">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//ugly hack plz resolve
+if (initialized &amp;&amp; other.initialized &amp;&amp; global.cannibals) {
+    // Get more energy from similarly colored food.
+    
+    if (other.area &lt; area/2) {
+        energy += other.energy;
+    }
+    
+    if (area &lt; other.area/2) {
+        to_destroy = true;
+    }
+    
+    /*color_sim = color_similarity(self, other);
+    color_dampening = .6;
+    color_sim *= color_dampening;
+    color_multiplier = 1 + color_sim;
+    
+    // TODO don't let it eat more food than exists!
+    meal_size = food_energy * color_multiplier * bite_scale;
+    
+    energy = min(max_energy, energy + meal_size);*/
 }
 </string>
           </argument>

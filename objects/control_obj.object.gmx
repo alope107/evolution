@@ -34,6 +34,7 @@ timer = interval;
 
 // TEST FLAGS
 global.fixture_experiment = true;
+global.cannibals = false;
 
 // DEBUG FLAGS
 global.draw_physics = false;
@@ -309,6 +310,29 @@ if (global.draw_interval) {
           <argument>
             <kind>1</kind>
             <string>global.draw_physics = !global.draw_physics;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="67">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.cannibals = !global.cannibals;
 </string>
           </argument>
         </arguments>
