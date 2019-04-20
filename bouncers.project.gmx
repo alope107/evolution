@@ -58,26 +58,38 @@
       <script>scripts\draw_rectangle_fast.gml</script>
     </scripts>
     <scripts name="geometry">
-      <script>scripts\random_triangle.gml</script>
       <script>scripts\rotate_point.gml</script>
       <script>scripts\sort_clockwise_and_center.gml</script>
-      <script>scripts\inner_angles.gml</script>
-      <script>scripts\triangle_centroid.gml</script>
-      <script>scripts\triangle_side_lengths.gml</script>
-      <script>scripts\triangle_incenter.gml</script>
-      <script>scripts\mutate_triangle.gml</script>
-      <script>scripts\triangle_area.gml</script>
       <script>scripts\mirror_point.gml</script>
-      <script>scripts\triangle_inradius.gml</script>
-      <script>scripts\triangle_perimeter.gml</script>
+      <scripts name="triangle">
+        <script>scripts\triangle_perimeter.gml</script>
+        <script>scripts\triangle_inradius.gml</script>
+        <script>scripts\triangle_area.gml</script>
+        <script>scripts\triangle_incenter.gml</script>
+        <script>scripts\triangle_side_lengths.gml</script>
+        <script>scripts\triangle_centroid.gml</script>
+        <script>scripts\inner_angles.gml</script>
+        <scripts name="creation">
+          <script>scripts\random_triangle.gml</script>
+          <script>scripts\mutate_triangle.gml</script>
+        </scripts>
+      </scripts>
+      <scripts name="creature">
+        <script>scripts\tail_coord.gml</script>
+      </scripts>
     </scripts>
     <scripts name="tests">
       <scripts name="geometry">
-        <script>scripts\inner_angles_test.gml</script>
-        <script>scripts\rotate_point_test.gml</script>
-        <script>scripts\triangle_side_lengths_test.gml</script>
-        <script>scripts\triangle_incenter_test.gml</script>
-        <script>scripts\triangle_area_test.gml</script>
+        <scripts name="triangle">
+          <script>scripts\triangle_area_test.gml</script>
+          <script>scripts\triangle_incenter_test.gml</script>
+          <script>scripts\triangle_side_lengths_test.gml</script>
+          <script>scripts\rotate_point_test.gml</script>
+          <script>scripts\inner_angles_test.gml</script>
+        </scripts>
+        <scripts name="creature">
+          <script>scripts\tail_coord_test.gml</script>
+        </scripts>
       </scripts>
     </scripts>
     <scripts name="chaser">

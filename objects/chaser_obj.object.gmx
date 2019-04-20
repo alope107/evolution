@@ -96,10 +96,7 @@ to_destroy = false;
     // How big the pupil of the eye will be as a ratio of pupil radius the eye white radius.
     pupil_scale = .5;
     
-    image_xscale = 1;
-    image_yscale = 1;
-    
-    body_coord = random_triangle(image_xscale * 32, 15);
+    body_coord = random_triangle(32, 15);
     
     perturb = true;
     if (perturb) {
@@ -110,15 +107,6 @@ to_destroy = false;
         wall_discouragement += rand_norm(0, wall_discouragement/2);
         eye_white_scale += rand_norm(0, eye_white_scale/3);
         pupil_scale += rand_norm(0, pupil_scale/3);
-        
-        //image_xscale += rand_norm(0, .1);
-        //image_yscale += rand_norm(0, .1);
-        
-        image_xscale += rand_norm(0, .2);
-        image_yscale += rand_norm(0, .2);
-        
-        image_xscale = max(image_xscale, .1);
-        image_yscale = max(image_yscale, .1);
     }
     
     // RGB components of its color.
@@ -146,11 +134,10 @@ if (!initialized) {
     area = triangle_area(body_coord);
     inradius = triangle_inradius(body_coord);
     
+    tail_loc = tail_coord(body_coord);
+    
     white_radius = eye_white_scale * inradius;
     pupil_radius = pupil_scale * white_radius;
-    
-    // TODO figure out better way than hardcoding sprite version.
-    width = image_xscale * sprite_get_width(chaser_spr);
 
     // Basal metabolic rate - rate at which energy will decrease when at rest.
     basal = 10;
@@ -166,8 +153,8 @@ if (!initialized) {
     phy_rotation = random(360);
     initialized = true;
     
-    // How large of a bite is taken. Proportional to the area.
-    bite_scale = 1;//image_xscale * image_yscale;
+    // How large of a bite is taken. TODO: Proportional to the area.
+    bite_scale = 1;
     
     tail_frame = 0;
     tail_frame_length = 20;
@@ -227,7 +214,7 @@ if (!initialized) {
     dx = max(dx, 0);
     dy = sin(degtorad(rel_dir)) * max_steering_strength;
     
-    physics_apply_local_force(-1 * width/2, 0, dx, dy);
+    physics_apply_local_force(tail_loc[0], tail_loc[1], dx, dy);
     
     tail_frame_progress += swim_strength;
     if (tail_frame_progress &gt; tail_frame_length) {
@@ -251,9 +238,6 @@ if (!initialized) {
         child.eagerness  = eagerness + rand_norm(0, eagerness/3);
         child.color_pref = color_pref + rand_norm(0, color_pref/3);
         child.wall_discouragement = wall_discouragement + rand_norm(0, wall_discouragement/3);
-        
-        child.image_xscale = max(image_xscale + rand_norm(0, .02), .1);
-        child.image_yscale = max(image_yscale + rand_norm(0, .02), .1);
         
         child.eye_white_scale = eye_white_scale + rand_norm(0, eye_white_scale/5);
         child.pupil_scale = pupil_scale + rand_norm(0, pupil_scale/5);
@@ -379,11 +363,11 @@ if (initialized &amp;&amp; other.initialized &amp;&amp; global.cannibals) {
             <string>if (initialized) {
     
      //Don't draw tail until you can find a nice place for it.
-    /*tail_offset = (width/2) + (sprite_get_width(tail_spr) * image_xscale)/2;
+    tail_offset = abs(tail_loc[0]) + (sprite_get_width(tail_spr) * image_xscale)/2;
     rad = degtorad(phy_rotation);
     tail_x =  x + (-1 * cos(rad) * tail_offset);
     tail_y = y + (-1 * sin(rad) * tail_offset);
-    draw_sprite_ext(tail_spr, tail_frame, tail_x, tail_y, image_xscale, image_yscale, -1 * phy_rotation, c_white, image_alpha); */
+    draw_sprite_ext(tail_spr, tail_frame, tail_x, tail_y, image_xscale, image_yscale, -1 * phy_rotation, c_white, image_alpha);
     
     
     // Rotate body
