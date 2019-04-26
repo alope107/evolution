@@ -109,6 +109,7 @@
     <object>objects\debugger_obj</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\big_tank</room>
     <room>rooms\fish_tank</room>
     <room>rooms\debugger</room>
     <room>rooms\diffusion_test</room>
