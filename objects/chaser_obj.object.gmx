@@ -183,8 +183,6 @@ if (!initialized) {
           <argument>
             <kind>1</kind>
             <string>if (initialized) { 
-    //target_food = instance_nearest(x, y, food_obj);
-    
     // Set desirability SO LOW that no one could ever want it.
     max_desirability = -9999999;
     
@@ -239,8 +237,8 @@ if (!initialized) {
         child.color_pref = color_pref + rand_norm(0, color_pref/3);
         child.wall_discouragement = wall_discouragement + rand_norm(0, wall_discouragement/3);
         
-        child.eye_white_scale = eye_white_scale + rand_norm(0, eye_white_scale/5);
-        child.pupil_scale = pupil_scale + rand_norm(0, pupil_scale/5);
+        child.eye_white_scale = eye_white_scale + rand_norm(0, eye_white_scale/10);
+        child.pupil_scale = pupil_scale + rand_norm(0, pupil_scale/10);
         
         child.body_coord = mutate_triangle(body_coord, 9, 15);
         
@@ -361,13 +359,13 @@ if (initialized &amp;&amp; other.initialized &amp;&amp; global.cannibals) {
           <argument>
             <kind>1</kind>
             <string>if (initialized) {
-    
-     //Don't draw tail until you can find a nice place for it.
-    tail_offset = abs(tail_loc[0]) + (sprite_get_width(tail_spr) * image_xscale)/2;
+    area_ratio = 1000
+    tail_scale = area/area_ratio
+    tail_offset = abs(tail_loc[0]) + (sprite_get_width(tail_spr) * tail_scale)/2;
     rad = degtorad(phy_rotation);
     tail_x =  x + (-1 * cos(rad) * tail_offset);
     tail_y = y + (-1 * sin(rad) * tail_offset);
-    draw_sprite_ext(tail_spr, tail_frame, tail_x, tail_y, image_xscale, image_yscale, -1 * phy_rotation, c_white, image_alpha);
+    draw_sprite_ext(tail_spr, tail_frame, tail_x, tail_y, tail_scale, tail_scale, -1 * phy_rotation, c_white, image_alpha);
     
     
     // Rotate body
@@ -394,15 +392,10 @@ if (initialized &amp;&amp; other.initialized &amp;&amp; global.cannibals) {
                   
    
     // Draw eye.
-    //white_radius = inradius;
-    //pupil_radius = 2.5;
     pupil_offset[0] = white_radius - pupil_radius;
     pupil_offset[1] = 0;
-    
     white_offset = triangle_incenter(rotated_body);
-    
     pupil_dir = point_direction(x + white_offset[0], y + white_offset[1], target_x, target_y)
-    
     pupil_offset = rotate_point(pupil_offset[0], pupil_offset[1], -pupil_dir);
     
     
