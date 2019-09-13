@@ -76,8 +76,11 @@ to_destroy = false;
           <argument>
             <kind>1</kind>
             <string>if (!isChild &amp;&amp; !initialized) {
+    m = base_phenotype();
+    /*m = ds_map_create();
     // Maximum linear force.
-    max_swim_strength = 20;
+    m[? "max_swim_strength"] = 20;
+    show_debug_message(string(m[? "max_swim_strength"]));
     // Maximum rotational force.
     max_steering_strength = 10;
     // Higher value means it will slow down less as it approaches the target. 
@@ -94,19 +97,19 @@ to_destroy = false;
     // How big the white of the eye will be as a ratio of the eye white radius to inradius.
     eye_white_scale = .5;
     // How big the pupil of the eye will be as a ratio of pupil radius the eye white radius.
-    pupil_scale = .5;
+    pupil_scale = .5;*/
     
     body_coord = random_triangle(32, 15);
     
     perturb = true;
     if (perturb) {
-        max_swim_strength  += rand_norm(0, max_swim_strength/2);
-        max_steering_strength  += rand_norm(0, max_steering_strength/2);
-        eagerness  += rand_norm(0, eagerness/2);
-        color_pref += rand_norm(0, color_pref/2);
-        wall_discouragement += rand_norm(0, wall_discouragement/2);
-        eye_white_scale += rand_norm(0, eye_white_scale/3);
-        pupil_scale += rand_norm(0, pupil_scale/3);
+        m[? "max_swim_strength"]  += rand_norm(0, m[? "max_swim_strength"]/2);
+        m[? "max_steering_strength"]  += rand_norm(0, m[? "max_steering_strength"]/2);
+        m[? "eagerness"]  += rand_norm(0, m[? "eagerness"]/2);
+        m[? "color_pref"] += rand_norm(0, m[? "color_pref"]/2);
+        m[? "wall_discouragement"] += rand_norm(0, m[? "wall_discouragement"]/2);
+        m[? "eye_white_scale"] += rand_norm(0, m[? "eye_white_scale"]/3);
+        m[? "pupil_scale"] += rand_norm(0, m[? "pupil_scale"]/3);
     }
     
     // RGB components of its color.
@@ -136,8 +139,8 @@ if (!initialized) {
     
     tail_loc = tail_coord(body_coord);
     
-    white_radius = eye_white_scale * inradius;
-    pupil_radius = pupil_scale * white_radius;
+    white_radius = m[? "eye_white_scale"] * inradius;
+    pupil_radius = m[? "pupil_scale"] * white_radius;
 
     // Basal metabolic rate - rate at which energy will decrease when at rest.
     basal = 10;
@@ -146,9 +149,9 @@ if (!initialized) {
     // Amount of energy required before a birth will occur.
     birthing_threshold =  21000;
     // The highest amount of energy it can have stored.
-    max_energy = 3 * starting_energy;
+    max_energy = 3 * m[? "starting_energy"];
     
-    energy = starting_energy;
+    energy = m[? "starting_energy"];
     image_blend = make_colour_rgb(r, g, b);
     phy_rotation = random(360);
     initialized = true;
@@ -194,10 +197,9 @@ if (!initialized) {
     dist = point_distance(x, y, target_x, target_y);
     
     rel_dir = dir + phy_rotation;
-    
     // If it is sufficiently far away, swim as fast as possible.
     // If it is close to the target, ease up so as not to overshoot.
-    swim_strength = min(max_swim_strength, dist * eagerness);
+    swim_strength = min(m[? "max_swim_strength"], dist * m[? "eagerness"]);
     
     if(instance_number(food_obj) == 0) {
         swim_strength = 0;
@@ -210,7 +212,7 @@ if (!initialized) {
     
     dx = cos(degtorad(rel_dir)) * swim_strength;
     dx = max(dx, 0);
-    dy = sin(degtorad(rel_dir)) * max_steering_strength;
+    dy = sin(degtorad(rel_dir)) * m[? "max_steering_strength"];
     
     physics_apply_local_force(tail_loc[0], tail_loc[1], dx, dy);
     
@@ -226,19 +228,20 @@ if (!initialized) {
     // As it starves, its alpha goes to zero.
     // Alpha is scaled on starting energy, anything above starting energy
     // has alpha of 1.
-    image_alpha = min(1, energy/starting_energy);
+    image_alpha = min(1, energy/m[? "starting_energy"]);
     
     if (energy &gt; birthing_threshold) {
         child = instance_create(x, y, chaser_obj);
         child.isChild = true;
-        child.max_swim_strength = max_swim_strength + rand_norm(0, max_swim_strength/3);
-        child.max_steering_strength = max_steering_strength + rand_norm(0, max_steering_strength/3);
-        child.eagerness  = eagerness + rand_norm(0, eagerness/3);
-        child.color_pref = color_pref + rand_norm(0, color_pref/3);
-        child.wall_discouragement = wall_discouragement + rand_norm(0, wall_discouragement/3);
+        child.m = base_phenotype();
+        child.m[? "max_swim_strength"] = m[? "max_swim_strength"] + rand_norm(0, m[? "max_swim_strength"]/3);
+        child.m[? "max_steering_strength"] = m[? "max_steering_strength"] + rand_norm(0, m[? "max_steering_strength"]/3);
+        child.m[? "eagerness"]  = m[? "eagerness"] + rand_norm(0, m[? "eagerness"]/3);
+        child.m[? "color_pref"] = m[? "color_pref"] + rand_norm(0, m[? "color_pref"]/3);
+        child.m[? "wall_discouragement"] = m[? "wall_discouragement"] + rand_norm(0, m[? "wall_discouragement"]/3);
         
-        child.eye_white_scale = eye_white_scale + rand_norm(0, eye_white_scale/10);
-        child.pupil_scale = pupil_scale + rand_norm(0, pupil_scale/10);
+        child.m[? "eye_white_scale"] = m[? "eye_white_scale"] + rand_norm(0, m[? "eye_white_scale"]/10);
+        child.m[? "pupil_scale"] = m[? "pupil_scale"] + rand_norm(0, m[? "pupil_scale"]/10);
         
         child.body_coord = mutate_triangle(body_coord, 9, 15);
         
