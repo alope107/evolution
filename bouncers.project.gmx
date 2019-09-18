@@ -33,8 +33,11 @@
     <sprite>sprites\tail_spr</sprite>
     <sprite>sprites\feeder_spr</sprite>
     <sprite>sprites\pixel_spr</sprite>
+    <sprite>sprites\camera_spr</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\Bubbles</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="file_handling">
@@ -95,6 +98,9 @@
     <scripts name="chaser">
       <script>scripts\select_target.gml</script>
     </scripts>
+    <scripts name="instance">
+      <script>scripts\random_instance.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\bouncer_obj</object>
@@ -107,10 +113,12 @@
     <object>objects\feeder_obj</object>
     <object>objects\diffusion_control_obj</object>
     <object>objects\debugger_obj</object>
+    <object>objects\camera_obj</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\fish_tank</room>
+    <room>rooms\camera_tank</room>
     <room>rooms\big_tank</room>
+    <room>rooms\fish_tank</room>
     <room>rooms\debugger</room>
     <room>rooms\diffusion_test</room>
   </rooms>
