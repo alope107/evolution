@@ -30,6 +30,8 @@ active = false;
 scale = .2;
 view_wview[0] = room_width;
 view_hview[0] = room_height;
+view_enabled = true;
+view_visible[0] = true;
 </string>
           </argument>
         </arguments>
@@ -56,6 +58,58 @@ view_hview[0] = room_height;
     x = (target).x;
     y = (target).y;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="40">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>scale += .01;
+scale = min(scale, 1.0);
+view_wview[0] = floor(room_width * scale);
+view_hview[0] = floor(room_height * scale);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="38">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>scale -= .01;
+scale = max(scale, .05);
+view_wview[0] = floor(room_width * scale);
+view_hview[0] = floor(room_height * scale);
 </string>
           </argument>
         </arguments>
