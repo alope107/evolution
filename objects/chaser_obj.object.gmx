@@ -157,7 +157,7 @@ if (!initialized) {
     initialized = true;
     
     // How large of a bite is taken. TODO: Proportional to the area.
-    bite_scale = 1;
+    bite_scale = area / 200; //1
     
     tail_frame = 0;
     tail_frame_length = 20;
@@ -416,6 +416,9 @@ if (initialized &amp;&amp; other.initialized &amp;&amp; global.cannibals) {
     }
     if (global.draw_generation) {
         draw_text(x, y - 20, string(gen));
+    }
+    if (global.draw_area) {
+        draw_text(x, y + 20, string(area));
     }
    // draw_text(x, y - 20, string(wall_discouragement));
 }

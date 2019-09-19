@@ -42,6 +42,7 @@ global.draw_desire = false;
 global.draw_generation = false;
 global.draw_interval = false;
 global.draw_debug_overlay = false;
+global.draw_area = false;
 
 // Data Structure Tests
 
@@ -358,6 +359,29 @@ show_debug_overlay(global.draw_debug_overlay);
           <argument>
             <kind>1</kind>
             <string>global.draw_physics = !global.draw_physics;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="65">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.draw_area = !global.draw_area;
 </string>
           </argument>
         </arguments>
