@@ -28,6 +28,7 @@
             <string>isChild = false;
 initialized = false;
 to_destroy = false;
+chosen = false;
 </string>
           </argument>
         </arguments>
@@ -149,7 +150,7 @@ if (!initialized) {
     // Amount of energy required before a birth will occur.
     birthing_threshold =  21000;
     // The highest amount of energy it can have stored.
-    max_energy = 3 * m[? "starting_energy"];
+    max_energy = 4 /*3*/ * m[? "starting_energy"];
     
     energy = m[? "starting_energy"];
     image_blend = make_colour_rgb(r, g, b);
@@ -205,16 +206,31 @@ if (!initialized) {
         swim_strength = 0;
     }
     
-    // The faster you swim, the faster you fade.
-    energy -= abs(swim_strength);
-    // But you always lose at least your basal.
-    energy -= basal;
-    
     dx = cos(degtorad(rel_dir)) * swim_strength;
     dx = max(dx, 0);
     dy = sin(degtorad(rel_dir)) * m[? "max_steering_strength"];
     
+    // Manual control
+    if (chosen &amp;&amp; global.controlling) {
+        dx = 0;
+        dy = 0;
+        if (keyboard_check(vk_up)) {
+            dx = m[? "max_swim_strength"];
+        }
+        if ( keyboard_check(vk_left) &amp;&amp; ! keyboard_check(vk_right)) {
+            dy = m[? "max_steering_strength"];
+        }
+        if ( keyboard_check(vk_right) &amp;&amp; ! keyboard_check(vk_left)) {
+            dy = -1 * m[? "max_steering_strength"];
+        }
+    }
+    
     physics_apply_local_force(tail_loc[0], tail_loc[1], dx, dy);
+    
+    // The faster you swim, the faster you fade.
+    energy -= abs(swim_strength);
+    // But you always lose at least your basal.
+    energy -= basal;
     
     tail_frame_progress += swim_strength;
     if (tail_frame_progress &gt; tail_frame_length) {
@@ -419,6 +435,12 @@ if (initialized &amp;&amp; other.initialized &amp;&amp; global.cannibals) {
     }
     if (global.draw_area) {
         draw_text(x, y + 20, string(area));
+    }
+    
+    if (chosen) {
+        draw_set_color(c_red);
+        draw_text(x, y + 20, "ME");
+        draw_set_color(c_white);
     }
    // draw_text(x, y - 20, string(wall_discouragement));
 }

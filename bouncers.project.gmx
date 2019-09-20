@@ -97,6 +97,7 @@
     </scripts>
     <scripts name="chaser">
       <script>scripts\select_target.gml</script>
+      <script>scripts\clicked_chaser.gml</script>
     </scripts>
     <scripts name="instance">
       <script>scripts\random_instance.gml</script>

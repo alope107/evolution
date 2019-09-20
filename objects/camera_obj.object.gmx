@@ -63,7 +63,7 @@ view_visible[0] = true;
         </arguments>
       </action>
     </event>
-    <event eventtype="5" enumb="40">
+    <event eventtype="5" enumb="50">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -89,7 +89,7 @@ view_hview[0] = floor(room_height * scale);
         </arguments>
       </action>
     </event>
-    <event eventtype="5" enumb="38">
+    <event eventtype="5" enumb="49">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -132,7 +132,13 @@ view_hview[0] = floor(room_height * scale);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>target = random_instance(chaser_obj);
+            <string>if (target != -1) {
+    (target).chosen = false;
+}
+target = random_instance(chaser_obj);
+if (target != -1) {
+    (target).chosen = true;
+}
 </string>
           </argument>
         </arguments>
@@ -164,8 +170,12 @@ else {
     active = true;
     view_wview[0] = floor(room_width * scale);
     view_hview[0] = floor(room_height * scale);
-    if (!instance_exists(target)) {
+    if (target == -1) {
+        // TODO: manually choose random instance to avoid bug
         target = random_instance(chaser_obj);
+        if (instance_exists(target)) {
+            (target).chosen = true;
+        }
     }
 }
 </string>
