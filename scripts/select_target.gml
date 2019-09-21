@@ -1,4 +1,5 @@
 // Return the coordinates of where the creature is interested in going.
+// TODO: Fix for cannibals
 
 var targets, t_coord, target, best_target;
 

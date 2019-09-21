@@ -117,6 +117,7 @@
     <object>objects\camera_obj</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\giant_camera_tank</room>
     <room>rooms\camera_tank</room>
     <room>rooms\diffusion_test</room>
     <room>rooms\big_tank</room>
