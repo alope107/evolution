@@ -1,14 +1,16 @@
 // Return the coordinates of where the creature is interested in going.
 
-var targets, t_coord;
+var targets, t_coord, target, best_target;
 
 t_coord[0] = 0;
 t_coord[1] = 0;
 
-targets[0] = food_obj
+targets[0] = food_obj;
 if (global.cannibals) {
     targets[1] = chaser_obj;
 }
+
+best_target = -1;
 
 // For each type of item that can be eaten
 for (i = 0; i < array_length_1d(targets); i++) {
@@ -35,6 +37,7 @@ for (i = 0; i < array_length_1d(targets); i++) {
         }
         if (desirability > max_desirability) {
             max_desirability = desirability;
+            best_target = target;
             t_coord[0] = target.x;
             t_coord[1] = target.y;
             // If we're in fear for our life.
@@ -48,7 +51,7 @@ for (i = 0; i < array_length_1d(targets); i++) {
     }
 }
 
-return t_coord;
+return best_target;//t_coord;
 
 
 

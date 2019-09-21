@@ -173,7 +173,7 @@ else {
     if (target == -1) {
         // TODO: manually choose random instance to avoid bug
         target = random_instance(chaser_obj);
-        if (instance_exists(target)) {
+        if (target != -1) {
             (target).chosen = true;
         }
     }

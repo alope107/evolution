@@ -118,10 +118,10 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\camera_tank</room>
+    <room>rooms\diffusion_test</room>
     <room>rooms\big_tank</room>
     <room>rooms\fish_tank</room>
     <room>rooms\debugger</room>
-    <room>rooms\diffusion_test</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
