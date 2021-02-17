@@ -41,7 +41,7 @@
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="-1" objName="camera_obj" xview="0" yview="0" wview="1024" hview="750" xport="0" yport="0" wport="1024" hport="750" hborder="100" vborder="100" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="camera_obj" xview="0" yview="0" wview="512" hview="375" xport="0" yport="0" wport="512" hport="375" hborder="100" vborder="100" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -51,58 +51,58 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="wall_obj" x="1024" y="1472" name="inst_3E959C37" locked="0" code="" scaleX="66.0625" scaleY="2.28125" colour="4294967295" rotation="0"/>
-    <instance objName="control_obj" x="96" y="64" name="inst_C3AF9C32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="0" y="736" name="inst_7C5F40E9" locked="0" code="" scaleX="-3.125" scaleY="54.322582244873" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="2048" y="736" name="inst_C80A7AEC" locked="0" code="" scaleX="1.96774196624756" scaleY="48.125" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="1024" y="0" name="inst_AEFE2692" locked="0" code="" scaleX="74.4375" scaleY="1.59375" colour="4294967295" rotation="0"/>
-    <instance objName="chaser_obj" x="768" y="576" name="inst_E51ED0EA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="food_obj" x="192" y="128" name="inst_E1CA64B9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="food_obj" x="1632" y="992" name="inst_8E191282" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="chaser_obj" x="288" y="1024" name="inst_EFA6719E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="chaser_obj" x="672" y="160" name="inst_CF2A7937" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="chaser_obj" x="768" y="1120" name="inst_69EB8525" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="chaser_obj" x="352" y="160" name="inst_E15A318D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="chaser_obj" x="64" y="128" name="inst_32D8CE73" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="352" y="192" name="inst_452A0FD1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="192" y="576" name="inst_ABE5C8DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="832" y="160" name="inst_3B78A48E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="chaser_obj" x="480" y="960" name="inst_C3B63684" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="chaser_obj" x="1280" y="1216" name="inst_FC049044" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="chaser_obj" x="1312" y="864" name="inst_B1012831" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="chaser_obj" x="1472" y="512" name="inst_DE9264C0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="chaser_obj" x="1216" y="384" name="inst_2F880F5E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="chaser_obj" x="1312" y="160" name="inst_03ED7895" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="food_obj" x="480" y="1280" name="inst_DA45B753" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="food_obj" x="1792" y="512" name="inst_6D2CCDFB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="food_obj" x="1088" y="256" name="inst_BE9B9574" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="food_obj" x="1056" y="1088" name="inst_6332E266" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="food_obj" x="608" y="640" name="inst_455916B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="feeder_obj" x="160" y="192" name="inst_F740B74F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="feeder_obj" x="1504" y="256" name="inst_79D1E236" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="feeder_obj" x="1504" y="1184" name="inst_C979A36C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="1024" y="864" name="inst_8AE3F3C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="1760" y="736" name="inst_7172305C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="1248" y="608" name="inst_7F1803D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="1792" y="288" name="inst_1F0C2490" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="256" y="1280" name="inst_AFC62909" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="832" y="1216" name="inst_29F3B8F1" locked="0" code="" scaleX="1.38709676265717" scaleY="15.5806455612183" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="448" y="864" name="inst_8F0E0AF2" locked="0" code="" scaleX="18.5" scaleY="0.5" colour="4294967295" rotation="0"/>
-    <instance objName="feeder_obj" x="416" y="1120" name="inst_56F9B555" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="food_obj" x="512" y="384" name="inst_AFDCAC85" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="food_obj" x="256" y="768" name="inst_0005BCDE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="food_obj" x="1632" y="1312" name="inst_C632DDFE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="camera_obj" x="128" y="64" name="inst_7BBF2FE0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="64" y="768" name="inst_2C3CD8DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="128" y="768" name="inst_CB0FA084" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="800" y="832" name="inst_19A875A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="896" y="896" name="inst_A1E0926E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="wall_obj" x="864" y="768" name="inst_7A8220AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="feeder_obj" x="640" y="1312" name="inst_42DEC300" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="food_obj" x="160" y="1056" name="inst_B8BB9D38" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="food_obj" x="608" y="1088" name="inst_FFFEFECF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="food_obj" x="352" y="928" name="inst_E91B75BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="chaser_obj" x="320" y="1312" name="inst_9723A469" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="1024" y="1472" name="inst_3E959C37" locked="-1" code="" scaleX="66.0625" scaleY="2.28125" colour="4294967295" rotation="0"/>
+    <instance objName="control_obj" x="96" y="64" name="inst_C3AF9C32" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="0" y="736" name="inst_7C5F40E9" locked="-1" code="" scaleX="-3.125" scaleY="54.322582244873" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="2048" y="736" name="inst_C80A7AEC" locked="-1" code="" scaleX="1.96774196624756" scaleY="48.125" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="1024" y="0" name="inst_AEFE2692" locked="-1" code="" scaleX="74.4375" scaleY="1.59375" colour="4294967295" rotation="0"/>
+    <instance objName="chaser_obj" x="768" y="576" name="inst_E51ED0EA" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="food_obj" x="192" y="128" name="inst_E1CA64B9" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="food_obj" x="1632" y="992" name="inst_8E191282" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="chaser_obj" x="288" y="1024" name="inst_EFA6719E" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="chaser_obj" x="672" y="160" name="inst_CF2A7937" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="chaser_obj" x="768" y="1120" name="inst_69EB8525" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="chaser_obj" x="352" y="160" name="inst_E15A318D" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="chaser_obj" x="64" y="128" name="inst_32D8CE73" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="352" y="192" name="inst_452A0FD1" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="192" y="576" name="inst_ABE5C8DB" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="832" y="160" name="inst_3B78A48E" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="chaser_obj" x="480" y="960" name="inst_C3B63684" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="chaser_obj" x="1280" y="1216" name="inst_FC049044" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="chaser_obj" x="1312" y="864" name="inst_B1012831" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="chaser_obj" x="1472" y="512" name="inst_DE9264C0" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="chaser_obj" x="1216" y="384" name="inst_2F880F5E" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="chaser_obj" x="1312" y="160" name="inst_03ED7895" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="food_obj" x="480" y="1280" name="inst_DA45B753" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="food_obj" x="1792" y="512" name="inst_6D2CCDFB" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="food_obj" x="1088" y="256" name="inst_BE9B9574" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="food_obj" x="1056" y="1088" name="inst_6332E266" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="food_obj" x="608" y="640" name="inst_455916B1" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="feeder_obj" x="160" y="192" name="inst_F740B74F" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="feeder_obj" x="1504" y="256" name="inst_79D1E236" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="feeder_obj" x="1504" y="1184" name="inst_C979A36C" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="1024" y="864" name="inst_8AE3F3C9" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="1760" y="736" name="inst_7172305C" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="1248" y="608" name="inst_7F1803D4" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="1792" y="288" name="inst_1F0C2490" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="256" y="1280" name="inst_AFC62909" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="832" y="1216" name="inst_29F3B8F1" locked="-1" code="" scaleX="1.38709676265717" scaleY="15.5806455612183" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="448" y="864" name="inst_8F0E0AF2" locked="-1" code="" scaleX="18.5" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="feeder_obj" x="416" y="1120" name="inst_56F9B555" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="food_obj" x="512" y="384" name="inst_AFDCAC85" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="food_obj" x="256" y="768" name="inst_0005BCDE" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="food_obj" x="1632" y="1312" name="inst_C632DDFE" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="camera_obj" x="128" y="64" name="inst_7BBF2FE0" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="64" y="768" name="inst_2C3CD8DD" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="128" y="768" name="inst_CB0FA084" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="800" y="832" name="inst_19A875A1" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="896" y="896" name="inst_A1E0926E" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="wall_obj" x="864" y="768" name="inst_7A8220AB" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="feeder_obj" x="640" y="1312" name="inst_42DEC300" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="food_obj" x="160" y="1056" name="inst_B8BB9D38" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="food_obj" x="608" y="1088" name="inst_FFFEFECF" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="food_obj" x="352" y="928" name="inst_E91B75BF" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="chaser_obj" x="320" y="1312" name="inst_9723A469" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>-1</PhysicsWorld>

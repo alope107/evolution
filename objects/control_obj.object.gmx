@@ -438,8 +438,8 @@ show_debug_overlay(global.draw_debug_overlay);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>json = file_text_read_all("fake.json");
-show_debug_message(json);
+            <string>//json = file_text_read_all("fake.json");
+//show_debug_message(json);
 
 /*mapa = json_decode('{
 "key2": 
@@ -449,9 +449,9 @@ show_debug_message(json);
 "key5": 7,
 "key6": "value6",
 }}');*/
-mapa = json_decode(json);
+//mapa = json_decode(json);
 //show_debug_message(ds_map_size(mapa));
-show_debug_message(ds_map_find_first(mapa));
+//show_debug_message(ds_map_find_first(mapa));
 </string>
           </argument>
         </arguments>

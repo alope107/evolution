@@ -4,6 +4,7 @@
 var type, idx, count;
 
 type = argument0;
+
 count = instance_number(type);
 if (count == 0) {
     return -1;

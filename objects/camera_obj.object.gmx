@@ -28,6 +28,7 @@
             <string>target = -1;
 active = false;
 scale = .2;
+borderFrac = .3;
 view_wview[0] = room_width;
 view_hview[0] = room_height;
 view_enabled = true;
@@ -84,6 +85,8 @@ view_visible[0] = true;
 scale = min(scale, 1.0);
 view_wview[0] = floor(room_width * scale);
 view_hview[0] = floor(room_height * scale);
+view_hborder[0] = floor(room_width * scale * borderFrac);
+view_vborder[0] = floor(room_height * scale * borderFrac);
 </string>
           </argument>
         </arguments>
@@ -110,6 +113,8 @@ view_hview[0] = floor(room_height * scale);
 scale = max(scale, .05);
 view_wview[0] = floor(room_width * scale);
 view_hview[0] = floor(room_height * scale);
+view_hborder[0] = 3000000;//floor(room_width * scale * borderFrac);
+view_vborder[0] = 3000000;//floor(room_height * scale * borderFrac);
 </string>
           </argument>
         </arguments>
@@ -132,7 +137,7 @@ view_hview[0] = floor(room_height * scale);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (target != -1) {
+            <string>if (target != -1 &amp;&amp; instance_exists(target)) {
     (target).chosen = false;
 }
 target = random_instance(chaser_obj);
@@ -171,9 +176,8 @@ else {
     view_wview[0] = floor(room_width * scale);
     view_hview[0] = floor(room_height * scale);
     if (target == -1) {
-        // TODO: manually choose random instance to avoid bug
         target = random_instance(chaser_obj);
-        if (target != -1) {
+        if (target != -1 &amp;&amp; instance_exists(target)) {
             (target).chosen = true;
         }
     }
